@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bviufwhgt3yii"]
+
+[ext_resource type="Script" uid="uid://cpot63vn1m2rr" path="res://fluid_sim.gd" id="1_o6bb2"]
+
+[node name="Fluid_sim" type="Node2D"]
+script = ExtResource("1_o6bb2")
