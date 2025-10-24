@@ -1,11 +1,12 @@
 extends Node2D
 
-var gravity: float = 50.0
+var gravity: float = 700.0
 var vel: Vector2 = Vector2.ZERO
 var radius: float = 10.0
 
 var pos: Vector2      
-var bounds: Rect2       
+var bounds: Rect2
+var restitution = 0.60
 
 func _ready() -> void:
 	position = Vector2.ZERO 
@@ -22,17 +23,18 @@ func _process(delta: float) -> void:
 
 	if pos.x - radius < bounds.position.x:
 		pos.x = bounds.position.x + radius
-		vel.x = -vel.x
+		vel.x = -vel.x * restitution
 	elif pos.x + radius > bounds.position.x + bounds.size.x:
 		pos.x = bounds.position.x + bounds.size.x - radius
-		vel.x = -vel.x
+		vel.x = -vel.x * restitution
 
 	if pos.y - radius < bounds.position.y:
 		pos.y = bounds.position.y + radius
-		vel.y = -vel.y
+		vel.y = -vel.y * restitution
+		
 	elif pos.y + radius > bounds.position.y + bounds.size.y:
 		pos.y = bounds.position.y + bounds.size.y - radius
-		vel.y = -vel.y
+		vel.y = -vel.y * restitution
 
 	queue_redraw()
 
